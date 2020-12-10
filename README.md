@@ -1,4 +1,4 @@
-README.md
+
 # 작업 폴더에서 cmd 
     >  npm init
 # Express,Ejs,TypeScript 설치 cmd
