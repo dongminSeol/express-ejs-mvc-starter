@@ -1,16 +1,49 @@
-import express, {Request, Response, NextFunction} from 'express';
+import * as bodyParser from 'body-parser';
+import express from 'express';
 import path from 'path';
+import expressLayouts  from 'express-ejs-layouts';
+import Controller from './interface/controller.interface';
 
-const app = express();
+class App {
+  public app: express.Application;
+  public port: number;
 
-import indexRouter from './routes/index';
+  constructor(controllers: Controller[], port: number) {
+    this.app = express();
+    this.port = port;
 
-app.set('views',path.join(__dirname,'views'));
-app.set('view engine','ejs');  // 템플릿 엔진 설정
+    //this.initializeMiddlewares();
+    this.initializeControllers(controllers);
+    this.initializeEjs();
+  }
 
-app.use('/',indexRouter);
+  public listen() {
+    this.app.listen(this.port, () => {
+      console.log(`App listening on the port ${this.port}`);
+    });
+  }
 
+  // private initializeMiddlewares() {
+  //   this.app.use(bodyParser.json());
+  // }
 
-app.listen(8001,()=>{  // 포트번호 설정
-  console.log('8001번 포트에서 서버 대기중입니다!');
-});
+  private initializeControllers(controllers: Controller[]) {
+    controllers.forEach((controller) => {
+      this.app.use('/', controller.router);
+    });
+  }
+  private initializeEjs(){
+
+    // 템플릿 엔진 설정
+    this.app.set('views',path.join(__dirname,'views'));
+    this.app.set('view engine','ejs');
+
+    //  ejs-layout 설정
+    this.app.use(expressLayouts);
+    this.app.set('layout', 'shared/_layout');
+    this.app.set("layout extractScripts", true);
+    
+  }
+}
+
+export default App;
