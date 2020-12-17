@@ -5,18 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Starter</title>
-    <style>*{margin: 0; padding: 0;}html, body {height: 100%;}</style>
+      <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
 </head>
 <body>
     <header>
-        헤더영역
-    </header>
+        <!-- https://mdbootstrap.com/docs/jquery/navigation/navbar/ -->
+        <nav class="navbar navbar-expand-lg navbar-dark primary-color">
+          <a class="navbar-brand" href="#">WebApps</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="basicExampleNav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="/">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/developer">Developers</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/course">Courses</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/instructor">Instructors</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/section">Sections</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
     <div id="main" style="border: 1px solid #dedede;">
         <%- body %>
     </div>
-    <footer>
-        푸터영역
+
+    </br>
+    </br>
+    <hr>
+    </br>
+    <footer class="container">
+    <p>&copy; 2019 Web Apps Fall 2019</p>
+    <p class="text-muted"><a href="https://github.com/denisecase/node-express-mvc-views">Source</a></p>
     </footer>
+
     <%- script %>
+
+    
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/js/mdb.min.js"></script>
+
 </body>
 </html>

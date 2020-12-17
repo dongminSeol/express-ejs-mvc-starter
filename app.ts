@@ -12,9 +12,9 @@ class App {
     this.app = express();
     this.port = port;
 
-    //this.initializeMiddlewares();
-    this.initializeControllers(controllers);
     this.initializeEjs();
+    this.initializeMiddlewares();
+    this.initializeControllers(controllers);
   }
 
   public listen() {
@@ -23,9 +23,10 @@ class App {
     });
   }
 
-  // private initializeMiddlewares() {
-  //   this.app.use(bodyParser.json());
-  // }
+  private initializeMiddlewares() {
+    // body-parser를 설정.
+    this.app.use(bodyParser.json());
+  }
 
   private initializeControllers(controllers: Controller[]) {
     controllers.forEach((controller) => {
@@ -34,12 +35,14 @@ class App {
   }
   private initializeEjs(){
 
+    this.app.use(expressLayouts);
+
     // 템플릿 엔진 설정
     this.app.set('views',path.join(__dirname,'views'));
     this.app.set('view engine','ejs');
 
     //  ejs-layout 설정
-    this.app.use(expressLayouts);
+    //this.app.set('layout', 'shared/layout');
     this.app.set('layout', 'shared/_layout');
     this.app.set("layout extractScripts", true);
     
