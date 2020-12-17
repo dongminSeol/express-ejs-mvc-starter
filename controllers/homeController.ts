@@ -11,7 +11,7 @@ class HomeController implements Controller
     }
     private initializeRouters(){
         //this.router.get(this.path, this.index);
-        this.router.all(`${this.path}`, this.index);
+        this.router.all('/', this.index);
         this.router.get(`${this.path}/info`, this.info);
     }
     private index = async(req: Request,res: Response, next: NextFunction)=>{
