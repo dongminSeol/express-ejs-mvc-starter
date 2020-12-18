@@ -3,6 +3,7 @@ import express from 'express';
 import path from 'path';
 import expressLayouts  from 'express-ejs-layouts';
 import Controller from './interface/controller.interface';
+import logger from './middleware/logger.middleware';
 
 class App {
   public app: express.Application;
@@ -24,8 +25,10 @@ class App {
   }
 
   private initializeMiddlewares() {
-    // body-parser를 설정.
+    // body-parser를 설정. 
+    // v.3.0 부터 사용 안함
     this.app.use(bodyParser.json());
+    this.app.use(logger)
   }
 
   private initializeControllers(controllers: Controller[]) {
